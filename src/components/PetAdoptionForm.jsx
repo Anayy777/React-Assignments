@@ -81,7 +81,79 @@ const PetAdoptionForm = () => {
   }
 
   return table ? (<AdopterData formData = {formData} handleGoBack = {goBack}/>) : (
-    <div className='form'></div>
+    <div className='form'>
+      <div>
+        <label htmlFor='petName'>Pet Name</label>
+        <input
+          type='text'
+          name='petName'
+          placeholder='Pet Name'
+          value={values.petName}
+          onChange={handleChange}
+        />
+        <small>{errors.petName}</small>
+      </div>
+      <div>
+        <label htmlFor='petType'>Pet Type</label>
+        <select name='petType' value={values.petType} onChange={handleChange}>
+          <option value={Dog}>Dog</option>
+          <option value={Cat}>Cat</option>
+          <option value={Cow}>Cow</option>
+
+        </select>
+        <small>{errors.petType}</small>
+      </div>
+      <div>
+        <label htmlFor="breed">Breed</label>
+        <input
+            type="text"
+            name="breed"
+            placeholder="Enter breed"
+            value={values.breed}
+            onChange={handleChange}
+        />
+        <small>{errors.breed}</small>
+    </div>
+    <div>
+        <label htmlFor='adopterName'>Your Name</label>
+        <input 
+            type="text"
+            name="adopterName"
+            placeholder='Enter your name'
+            value={values.adopterName}
+            onChange={handleChange} 
+        />
+        <small>{errors.adopterName}</small>
+    </div>
+    <div>
+        <label htmlFor='email'>Email</label>
+        <input 
+            type="email" 
+            name="email" 
+            placeholder='Enter your email' 
+            value={values.mail} 
+            onChange={handleChange} 
+        />
+        <small>{errors.mail}</small>
+    </div>
+    <div>
+        <label htmlFor='phone'>Phone</label>
+        <input 
+            type="text"
+            name="phone"
+            placeholder='Enter your phone number'
+            value={values.phoneNo}
+            onChange={handleChange} 
+        />
+        <small>{errors.phoneNo}</small>
+    </div>
+    <div>
+        <button type="button" onClick={handleSubmit}>
+            Submit
+        </button>
+    </div>
+
+    </div>
   )
 }
 

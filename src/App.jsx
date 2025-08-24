@@ -17,7 +17,6 @@ const App = () => {
     >
       <Header message={"Pet Adoption Form"}/>
       <PetAdoptionForm />
-      {/* <AdopterData/> */}
       
     </div>
   );
