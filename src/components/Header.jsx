@@ -1,8 +1,12 @@
 import React from 'react'
 
-const Header = () => {
+const Header = ({message}) => {
   return (
-    <div></div>
+    <div>
+      <nav style={{backgroundColor : "#c59771bd" , padding : "16px 32 px"}}>
+        <h1>{message}</h1>
+      </nav>
+    </div>
   )
 }
 
