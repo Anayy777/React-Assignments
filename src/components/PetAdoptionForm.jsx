@@ -9,7 +9,7 @@ const PetAdoptionForm = () => {
     petName : "" , 
     petType : "" , 
     breed : "dog" , 
-    name : "" , 
+    adopterName : "" , 
     mail : "" ,  
     phoneNo : ""
 
@@ -61,7 +61,7 @@ const PetAdoptionForm = () => {
       petName : "" , 
       petType : "" , 
       breed : "dog" , 
-      name : "" , 
+      adopterName : "" , 
       mail : "" ,  
       phoneNo : ""
     })

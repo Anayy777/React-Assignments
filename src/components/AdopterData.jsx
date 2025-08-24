@@ -20,8 +20,8 @@ export class AdopterData extends Component {
           <tbody>
             {formData.map((data , index) => (
               <tr key={index}>
-                <td>{data.PetName}</td>
-                <td>{data.PetType}</td>
+                <td>{data.petName}</td>
+                <td>{data.petType}</td>
                 <td>{data.breed}</td>
                 <td>{data.name}</td>
                 <td>{data.mail}</td>
