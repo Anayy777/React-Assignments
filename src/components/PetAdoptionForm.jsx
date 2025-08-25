@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import AdopterData from '../../solution/AdopterData';
+import AdopterData from './AdopterData'; 
 import { validation } from '../utils/validation'
 
 const PetAdoptionForm = () => {
@@ -10,24 +10,23 @@ const PetAdoptionForm = () => {
     petType : "" , 
     breed : "dog" , 
     adopterName : "" , 
-    mail : "" ,  
+    email : "" ,  
     phoneNo : ""
 
   });  
+
+  const [otherPetType , setOtherPetType] = useState("");
   const [errors ,  setErrors] = useState({
     petName : "" , 
     petType : "" , 
     breed : "" , 
-    name : "" , 
-    mail : "" ,  
+    adopterName : "" , 
+    email : "" ,  
     phoneNo : ""
 
   }); 
 
 
-
-  const {petName , petType , breed , name , mail , phoneNo} = values;
-  
   
   const handleChange  = (event) => {
     const {name , value} = event.target;
@@ -41,9 +40,18 @@ const PetAdoptionForm = () => {
   }
 
   const handleSubmit = () => {
-    if(!values.petName|| !values.petType || !values.breed || !values.name || !values.phoneNo || !values.mail){
+    if(values.petType === 'Other' && !otherPetType){
+      alert("Pleaase specify the kind of pet");
+      return;
+    }
+
+    if(!values.petName|| !values.petType || !values.breed || !values.adopterName || !values.phoneNo || !values.email){
       alert("Please fill the needful details");
       return;
+    }
+
+    const submission = {
+      ...values , petType : values.petType === "Other" ? otherPetType : values.petType
     }
 
     const hasErrors = Object.values(errors).some((errorMessage) =>
@@ -52,9 +60,7 @@ const PetAdoptionForm = () => {
       alert("Please fix the errors")
       return;
     }
-
-    setFormData((prevData) => [...prevData , values])
-
+    setFormData((prevData) => [...prevData, submission]);
     setTable(true);
 
     setValues({
@@ -62,7 +68,7 @@ const PetAdoptionForm = () => {
       petType : "" , 
       breed : "dog" , 
       adopterName : "" , 
-      mail : "" ,  
+      email : "" ,  
       phoneNo : ""
     })
 
@@ -70,8 +76,8 @@ const PetAdoptionForm = () => {
       petName : "" , 
       petType : "" , 
       breed : "" , 
-      name : "" , 
-      mail : "" ,  
+      adopterName : "" , 
+      email : "" ,  
       phoneNo : ""
     })
   }
@@ -96,13 +102,28 @@ const PetAdoptionForm = () => {
       <div>
         <label htmlFor='petType'>Pet Type</label>
         <select name='petType' value={values.petType} onChange={handleChange}>
-          <option value={Dog}>Dog</option>
-          <option value={Cat}>Cat</option>
-          <option value={Cow}>Cow</option>
+          <option value={"Dog"}>Dog</option>
+          <option value={"Cat"}>Cat</option>
+          <option value={"Cow"}>Cow</option>
+          <option value = {"Other"}>Other</option>
 
         </select>
         <small>{errors.petType}</small>
       </div>
+      {values.petType === "Other" ? (
+        <div>
+          <label htmlFor='otherPetType'>Please Specify</label>
+          <input type='text' placeholder='Enter pet name' name='otherPetType' 
+          value={otherPetType}
+          onChange={(e) => setOtherPetType(e.target.value)}
+          >
+          
+
+          </input>
+
+        </div>
+      ) : null
+      }
       <div>
         <label htmlFor="breed">Breed</label>
         <input
@@ -128,19 +149,19 @@ const PetAdoptionForm = () => {
     <div>
         <label htmlFor='email'>Email</label>
         <input 
-            type="email" 
+            type="text" 
             name="email" 
             placeholder='Enter your email' 
-            value={values.mail} 
+            value={values.email} 
             onChange={handleChange} 
         />
-        <small>{errors.mail}</small>
+        <small>{errors.email}</small>
     </div>
     <div>
         <label htmlFor='phone'>Phone</label>
         <input 
             type="text"
-            name="phone"
+            name="phoneNo"
             placeholder='Enter your phone number'
             value={values.phoneNo}
             onChange={handleChange} 

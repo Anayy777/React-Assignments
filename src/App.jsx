@@ -3,8 +3,6 @@ import PetAdoptionForm from './components/PetAdoptionForm';
 import "./myApp.css";
 
 
-import AdopterData from './components/AdopterData';
-
 
 const App = () => {
   return (  
