@@ -8,7 +8,7 @@ const PetAdoptionForm = () => {
   const [values , setValues] = useState({
     petName : "" , 
     petType : "" , 
-    breed : "dog" , 
+    breed : "" , 
     adopterName : "" , 
     email : "" ,  
     phoneNo : ""
@@ -149,7 +149,7 @@ const PetAdoptionForm = () => {
     <div>
         <label htmlFor='email'>Email</label>
         <input 
-            type="text" 
+            type="email" 
             name="email" 
             placeholder='Enter your email' 
             value={values.email} 
