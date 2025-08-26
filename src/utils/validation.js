@@ -9,14 +9,14 @@ export const validation = (name, value, errors) => {
                 value.length < 3 ? "Breed must be at least 3 characters" : "";
             break;
         case "adopterName":
-            errors.name =
+            errors.adopterName =
                 value.length < 3 ? "Your Name must be at least 3 characters" : "";
             break;
         case "email":
             errors.email = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value) ? "" : "Invalid email address";
             break;
         case "phoneNo":
-            errors.phone = /^\d{10}$/.test(value)
+            errors.phoneNo = /^\d{10}$/.test(value)
                 ? ""
                 : "Please enter a valid 10-digit phone number!";
             break;

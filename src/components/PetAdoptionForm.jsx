@@ -65,8 +65,8 @@ const PetAdoptionForm = () => {
 
     setValues({
       petName : "" , 
-      petType : "" , 
-      breed : "dog" , 
+      petType : "Dog" , 
+      breed : "" , 
       adopterName : "" , 
       email : "" ,  
       phoneNo : ""
@@ -80,6 +80,8 @@ const PetAdoptionForm = () => {
       email : "" ,  
       phoneNo : ""
     })
+
+    setOtherPetType("");
   }
 
   const goBack =() => {
